@@ -13,4 +13,13 @@ const userSchema = new Schema(
   },
   { timestamps: { createdAt: 'created_at' } }
 );
+userSchema.virtual('id').get(function () {
+  return this._id.toHexString();
+});
+
+// Ensure virtual fields are serialised.
+userSchema.set('toJSON', {
+  virtuals: true,
+});
+
 module.exports = model('User', userSchema);

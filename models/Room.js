@@ -17,4 +17,13 @@ const roomSchema = new Schema(
   },
   { timestamps: { createdAt: 'created_at' } }
 );
+roomSchema.virtual('id').get(function () {
+  return this._id.toHexString();
+});
+
+// Ensure virtual fields are serialised.
+roomSchema.set('toJSON', {
+  virtuals: true,
+});
+
 module.exports = model('Room', roomSchema);

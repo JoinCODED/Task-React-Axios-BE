@@ -1,5 +1,6 @@
 let Room = require('../models/Room');
 let Msg = require('../models/Msg');
+let slugify = require('slugify');
 
 exports.getRooms = async (req, res, next) => {
   try {
@@ -15,7 +16,10 @@ exports.createRoom = async (req, res, next) => {
     // if (req.user) {
     //   req.body.author = req.user.id;
     // }
+    req.body.slug = slugify(req.body.title);
+
     let newRoom = req.body;
+
     newRoom = await Room.create(newRoom);
     res.status(201).json(newRoom);
   } catch (error) {
