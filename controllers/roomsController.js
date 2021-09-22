@@ -16,7 +16,7 @@ exports.createRoom = async (req, res, next) => {
     // if (req.user) {
     //   req.body.author = req.user.id;
     // }
-    req.body.slug = slugify(req.body.title);
+    req.body.slug = slugify(req.body.title.toLowerCase());
 
     let newRoom = req.body;
 
