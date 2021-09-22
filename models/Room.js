@@ -12,7 +12,8 @@ const roomSchema = new Schema(
     description: {
       type: String,
       required: true,
-    },slug {
+    },
+    slug: {
     type: String,
   }
     messages: [{ type: Schema.Types.ObjectId, ref: 'Msg' }],
