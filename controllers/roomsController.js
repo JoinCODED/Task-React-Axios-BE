@@ -51,7 +51,7 @@ exports.deleteRoom = async (req, res, next) => {
     //   res.status(401).json("You can't delete a room if you are not the author");
     // }
 
-    await Room.findOneAndDelete({ id: req.params.roomId });
+    await Room.findOneAndDelete({ _id: req.params.roomId });
     res.status(201).json('deleted');
   } catch (error) {
     next(error);
