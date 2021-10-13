@@ -35,7 +35,7 @@ exports.updateRoom = async (req, res, next) => {
     // }
 
     const updatedRoom = await Room.findOneAndUpdate(
-      req.params.roomId,
+      { _id: req.params.roomId },
       req.body,
       { new: true }
     ).populate('messages');
